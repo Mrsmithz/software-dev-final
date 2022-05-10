@@ -6,9 +6,9 @@ services:
     container_name: fs-frontend
     restart: unless-stopped
     ports:
-      - 3000:3000
+      - 18080:3000
     environment:
-      - NEXT_PUBLIC_API_URI=http://backend:8000
+      - NEXT_PUBLIC_API_URI=http://backend:18000
   backend:
     build:
       context: ./backend/
@@ -20,7 +20,7 @@ services:
       - MONGO_URI=mongodb+srv://mrsmithz:123456Za@cluster0.fydss.mongodb.net/fullstack-dev
       - NODE_ENV=prd
     ports:
-      - 8000:8000
+      - 18000:8000
       - 9100:9100
   prometheus:
     image: prom/prometheus
@@ -33,7 +33,7 @@ services:
     image: grafana/grafana
     restart: unless-stopped
     ports:
-      - 9999:3000
+      - 19999:3000
     volumes:
       - ./config/datasources:/etc/grafana/provisioning/datasources
   zipkin:
