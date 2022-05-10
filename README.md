@@ -48,7 +48,7 @@ http://localhost:9100/metrics
 ```
 ## Prometheus
 ```
-http://localhost:9090/metrics
+http://localhost:9090
 ```
 
 ## zipkin for tracing backend
