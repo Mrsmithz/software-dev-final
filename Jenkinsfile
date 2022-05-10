@@ -17,16 +17,6 @@ pipeline {
                 }
             }
         }
-        stage('Download Dependency for frontend'){
-            agent {
-                docker 'node:16-alpine'
-            }
-            steps {
-                dir('frontend'){
-                    sh 'yarn install'
-                }
-            }
-        }
         stage('Test for backend'){
             agent {
                 docker 'node:16-alpine'
@@ -34,6 +24,16 @@ pipeline {
             steps {
                 dir('backend'){
                     sh 'yarn test'
+                }
+            }
+        }
+        stage('Download Dependency for frontend'){
+            agent {
+                docker 'node:16-alpine'
+            }
+            steps {
+                dir('frontend'){
+                    sh 'yarn install'
                 }
             }
         }
