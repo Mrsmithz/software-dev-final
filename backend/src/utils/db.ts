@@ -11,7 +11,7 @@ const connectToDB = async (uri : string) => {
     })
 }
 const disconnectFromDB = async () => {
-    return await mongoose.connection.close()
+    return await mongoose.disconnect()
 }
 
 const clearDB = async (except : string[] = []) => {

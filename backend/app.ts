@@ -2,11 +2,10 @@ import express, {Request, Response, NextFunction, Application} from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import prometheusClient from 'prom-client'
 import { httpRequestDurationMicroseconds } from './src/utils/metrics'
 import responseTime from 'response-time'
-import {createUser} from './src/controller/user.controller'
-
+import {register} from './src/controller/vaccine.controller'
+import { IRegister } from './src/types/register.type'
 dotenv.config({path: `.env.${process.env.NODE_ENV}`})
 
 const app : Application = express()
@@ -29,9 +28,9 @@ app.get('/health', async (req : Request , res : Response, next : NextFunction) =
         status:'UP'
     })
 })
-app.post('/user', async (req : Request , res : Response, next : NextFunction) => {
-    const {firstName, lastName, email} = req.body
-    const user = await createUser(firstName, lastName, email)
-    res.status(201).send(user)
+app.post('/register', async (req : Request , res : Response, next : NextFunction) => {
+    const data = req.body as IRegister
+    const result = await register(data)
+    res.status(201).send(result)
 })
 export default app

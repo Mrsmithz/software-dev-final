@@ -1,13 +1,13 @@
 import User from '../model/User'
 import { databaseResponseTimeHistogram } from '../utils/metrics'
-
-export const createUser = async (firstName : string, lastName : string, email : string) => {
+import { IRegister } from '../types/register.type'
+export const register = async (user : IRegister) => {
     const metricsLabels = {
-        operation : 'createUser'
+        operation : 'registerUser'
     }
     const timer = databaseResponseTimeHistogram.startTimer()
     try{
-        const result = await User.create({firstName, lastName, email})
+        const result = await User.create(user)
         timer({...metricsLabels, success:"true"})
         return result
     }
