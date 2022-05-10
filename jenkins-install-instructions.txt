@@ -1,0 +1,16 @@
+for docker with wsl2
+
+start with
+
+docker run -p 8080:8080 -p 50000:50000 -d -v /var/run/docker.sock:/var/run/docker.sock -v jenkins_home:/var/jenkins_home jenkins/jenkins
+
+and exec with root user to created docker container
+docker exec -u 0 -it <container_id> bash
+
+install docker client with
+
+curl -sSL https://download.docker.com/linux/static/stable/x86_64/docker-18.06.3-ce.tgz | sudo tar -C /usr/local/bin -xz --strip=1 docker/docker
+
+then copy docker from /usr/local/bin/docker to /usr/bin/
+then chmod 777 docker
+then chmod 777 /var/run/docker.sock
