@@ -57,6 +57,7 @@ const RegistrationForm = () => {
         }
         catch(err){
             console.error(err)
+            alert('Register fail, please try again')
         }
     }
     return (

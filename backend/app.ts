@@ -19,7 +19,9 @@ app.use(responseTime((req : Request, res : Response, time : number) => {
     }, time)
 }))
 app.use(morgan('dev'))
-app.use(cors())
+app.use(cors({
+    origin:['http://159.223.45.216:18080/']
+}))
 app.use(express.json())
 
 
