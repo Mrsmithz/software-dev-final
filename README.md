@@ -42,10 +42,15 @@ http://localhost:18000
 http://localhost:18080
 ```
 
-## Prometheus for Backend
+## Prometheus Metrics for Backend
 ```
 http://localhost:9100/metrics
 ```
+## Prometheus
+```
+http://localhost:9090/metrics
+```
+
 ## zipkin for tracing backend
 ```
 http://localhost:9411
